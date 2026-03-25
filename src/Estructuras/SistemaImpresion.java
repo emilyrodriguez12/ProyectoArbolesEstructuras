@@ -32,6 +32,7 @@ public class SistemaImpresion {
     /**
      * REQUERIMIENTO: Cargar usuarios desde el archivo CSV.
      */
+    
     public void leerArchivoUsuarios(String ruta) {
         try (java.io.BufferedReader lector = new java.io.BufferedReader(new java.io.FileReader(ruta))) {
             String linea;
@@ -73,7 +74,7 @@ public class SistemaImpresion {
                     }
                 }
 
-                doc.tiempo = etiquetaFinal; // Le asignamos su prioridad real
+                doc.tiempo = etiquetaFinal; // Asignamos su prioridad real
                 colaDeImpresion.insertar(doc); // Entra al árbol
                 avanzarReloj(); // Cada envío consume tiempo
             }
