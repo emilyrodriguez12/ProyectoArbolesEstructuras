@@ -14,7 +14,7 @@ public class Usuario {
     
     String nombre;
     String prioridad; // "prioridad_alta", "prioridad_media", "prioridad_baja"
-    Usuario sig; // Puntero para la Tabla Hash (como en tu proyecto de grafos)
+    Usuario sig; // Puntero para Tabla Hash (como en tu proyecto de grafos)
     
     // Arreglo para los documentos que el usuario crea pero NO ha mandado a imprimir
     Documento[] misDocumentos; 
