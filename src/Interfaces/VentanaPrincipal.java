@@ -149,7 +149,7 @@ SistemaImpresion sistema = new SistemaImpresion();
             return;
         }
 
-// Validación de existencia del usuario
+// Validación de que existe el usuario
         if (sistema.todosLosUsuarios.buscarUsuario(txtUsuario.getText().trim()) == null) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error: El usuario '" + txtUsuario.getText() + "' no existe. Cargue el CSV primero.");
             return;
@@ -160,7 +160,7 @@ SistemaImpresion sistema = new SistemaImpresion();
 // Para este ejemplo, el usuario primero crea el doc y luego lo manda
         Usuario user = sistema.todosLosUsuarios.buscarUsuario(u);
         if (user != null) {
-            user.crearDocumento(d, 100, "pdf"); // Valores por defecto para ir rápido
+            user.crearDocumento(d, 100, "pdf"); // Valores por defecto para mas rapidez
             sistema.enviarADocACola(u, d, true); // Lo mandamos como urgente por defecto
             refrescar();
             txtDoc.setText(""); // Limpiamos para el siguiente
