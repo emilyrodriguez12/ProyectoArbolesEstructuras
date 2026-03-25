@@ -10,8 +10,11 @@ import Estructuras.Usuario;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author MARYCRIS
+ * Representa la interfaz gráfica principal del simulador del sistema operativo
+ * Esta clase interactúa directamente con el usuario, permitiendo cargar archivos CSV, 
+ * enviar documentos a la cola de impresión, liberar la impresora y visualizar 
+ * en tiempo real el estado del Montículo Binario a través de una representación de árbol.
+ * * @author Emily Rodriguez y Daniel Saracual
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     
@@ -24,7 +27,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Tu cerebro del programa
 SistemaImpresion sistema = new SistemaImpresion();
 
-// Método para actualizar la pantalla después de cada clic
+/**
+     * Actualiza los componentes visuales de la interfaz.
+     * Se debe llamar a este método después de cualquier acción que modifique 
+     * el estado de la cola de impresión o el tiempo del reloj.
+     */
     public void refrescar() {
         txtArbol.setText(sistema.colaDeImpresion.generarVistaArbol(0, 0));
         lblReloj.setText("Reloj: " + sistema.reloj);
