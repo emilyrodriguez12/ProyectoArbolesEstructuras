@@ -5,9 +5,13 @@
 package Estructuras;
 
 /**
- *
- * @author MARYCRIS
- */
+ * Representa un documento creado por un usuario dentro de la simulación del sistema operativo.
+ * Almacena la información básica del archivo y los datos necesarios
+ * para su gestión en la cola de impresión (Montículo Binario), como su 
+ * etiqueta de tiempo y si fue marcado como prioritario al momento de enviarse a imprimir.
+ * @author Emily Rodriguez y Daniel Saracual
+ * */
+
 public class Documento {
     public String nombre;
     public int tamaño;

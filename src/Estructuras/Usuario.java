@@ -7,8 +7,12 @@ package Estructuras;
 import Estructuras.Documento;
 
 /**
- *
- * @author MARYCRIS
+ * Representa a un usuario dentro de la simulación del sistema operativo.
+ * Esta clase cumple un doble propósito: por un lado, actúa como un nodo dentro 
+ * de la Tabla de Dispersión (utilizando el atributo {@code sig} para manejar colisiones), 
+ * y por otro, funciona como un contenedor local para gestionar los documentos 
+ * que el usuario ha creado pero que aún no han sido enviados a la cola de impresión[cite: 32, 41].
+ * * @author Emily Rodriguez y Daniel Saracual
  */
 public class Usuario {
     
@@ -29,7 +33,9 @@ public class Usuario {
     }
 
     /**
-     * Agrega un nuevo documento a la lista personal del usuario.
+     * Crea un nuevo documento y lo guarda en la lista personal del usuario.
+     * El documento se inicializa con un tiempo de 0, ya que aún no ha interactuado 
+     * con el reloj del sistema ni ha ingresado a la cola de impresión.
      */
     public void crearDocumento(String nombreDoc, int tamaño, String tipo) {
         if (cantidadDocs < misDocumentos.length) {
@@ -43,8 +49,10 @@ public class Usuario {
     }
 
     /**
-     * REQUERIMIENTO: "Un usuario podrá eliminar un documento que 
-     * aún no ha sido enviado a la cola de impresión".
+     * REQUERIMIENTO: Eliminar un documento no encolado.
+     * Busca y elimina un documento específico del almacenamiento local del usuario, 
+     * cumpliendo con la regla de que solo se pueden eliminar localmente aquellos 
+     * que no han sido enviados a la cola de impresión.
      */
     public void eliminarDocumentoLocal(String nombreDoc) {
         for (int i = 0; i < cantidadDocs; i++) {
@@ -74,7 +82,9 @@ public class Usuario {
     }
 
     /**
-     * Método para facilitar el llenado de JLists o JComboBox en la Interfaz.
+     * Genera una lista con los nombres y tipos de todos los documentos locales 
+     * del usuario. Este método está diseñado para facilitar el llenado de 
+     * componentes en la interfaz gráfica, como JLists o JComboBoxes.
      */
     public String[] listarDocumentos() {
         String[] nombres = new String[cantidadDocs];

@@ -7,8 +7,12 @@ package Estructuras;
 import Estructuras.Documento;
 
 /**
- *
- * @author MARYCRIS
+ * Representa la Cola de Prioridad del sistema operativo utilizando la estructura 
+ * de datos de un Montículo Binario (Min-Heap).
+ * Se implementa mediante un arreglo estático donde el elemento de menor valor 
+ * (la etiqueta de tiempo más pequeña, es decir, la mayor prioridad) siempre 
+ * se encuentra en la raíz (índice 0).
+ * * @author Emily Rodriguez y Daniel Saracual
  */
 public class MonticuloBinario {
     public Documento[] datos; // El arreglo que guarda los documentos
@@ -57,6 +61,11 @@ public class MonticuloBinario {
         return elPrimero;
     }
 
+    /**
+     * Método auxiliar que hace "hundir" un nodo desplazado a la raíz tras una 
+     * eliminación, comparándolo con sus hijos para restaurar el orden del Min-Heap.
+     * * @param indice La posición actual del documento que se está hundiendo.
+     */
     private void hundirNodo(int indice) {
         int hijoIzquierdo = 2 * indice + 1;
         int hijoDerecho = 2 * indice + 2;
@@ -79,8 +88,12 @@ public class MonticuloBinario {
     }
 
     /**
-     * REQUERIMIENTO: Eliminar documento de la cola (El truco especial).
+     * REQUERIMIENTO: Eliminar documento de la cola sin imprimirlo.
+     * Busca un documento específico, altera su etiqueta de tiempo a un valor 
+     * extremadamente bajo para forzarlo a subir a la raíz del montículo, y 
+     * finalmente lo extrae simulando una cancelación.
      */
+    
     public void forzarEliminacion(String nombreDueño, String nombreArchivo) {
         for (int i = 0; i < tamañoActual; i++) {
             if (datos[i].dueño.equals(nombreDueño) && datos[i].nombre.equals(nombreArchivo)) {
@@ -100,10 +113,11 @@ public class MonticuloBinario {
         datos[j] = temporal;
     }
     
-    /**
- * REQUERIMIENTO: Vista de Árbol.
- * Genera un String con la estructura visual del montículo.
- */
+   /**
+     * Intercambia la posición de dos documentos dentro del arreglo del montículo.
+     * * @param i Índice del primer documento.
+     * @param j Índice del segundo documento.
+     */
 public String generarVistaArbol(int indice, int nivel) {
     // Si el índice se sale del arreglo, no hay nada que dibujar
     if (indice >= tamañoActual) {

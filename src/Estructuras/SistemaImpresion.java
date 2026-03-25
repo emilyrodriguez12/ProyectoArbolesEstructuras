@@ -8,8 +8,12 @@ import Estructuras.MonticuloBinario;
 import Estructuras.Documento;
 
 /**
- *
- * @author MARYCRIS
+ * Representa el núcleo del sistema operativo encargado de administrar la simulación 
+ * de la cola de impresión.
+ * Esta clase centraliza e integra las estructuras de datos requeridas: 
+ * la Tabla de Dispersión para la búsqueda O(1) de los usuarios y el 
+ * Montículo Binario para la gestión de prioridades de los documentos.
+ * * @author Emily Rodriguez y Daniel Saracual
  */
 public class SistemaImpresion {
     public TablaHash todosLosUsuarios; // El almacén de usuarios (O(1))
@@ -30,7 +34,11 @@ public class SistemaImpresion {
     }
 
     /**
-     * REQUERIMIENTO: Cargar usuarios desde el archivo CSV.
+     * REQUERIMIENTO: Cargar usuarios desde archivo.
+     * Lee un archivo de texto con formato ".CSV" línea por línea para instanciar 
+     * y registrar usuarios en el sistema. Se espera que el archivo tenga una 
+     * estructura de "usuario, tipo" omitiendo la primera línea de encabezado.
+     * * @param ruta La ruta absoluta o relativa donde se encuentra el archivo CSV.
      */
     
     public void leerArchivoUsuarios(String ruta) {
@@ -54,7 +62,12 @@ public class SistemaImpresion {
     }
 
     /**
-     * REQUERIMIENTO: Mandar un documento a la cola de prioridad.
+     * REQUERIMIENTO: Enviar documento a la cola de impresión.
+     * <p>
+     * Toma un documento creado por un usuario y lo introduce en la cola de prioridad.
+     * Si el documento es marcado como prioritario, su etiqueta de tiempo generada 
+     * por el reloj es reducida mediante una división (aplicando el nivel de prioridad 
+     * del usuario), lo que le permite escalar posiciones en el montículo.
      */
     public void enviarADocACola(String nombreUsuario, String nombreDoc, boolean esPrioritario) {
         Usuario user = todosLosUsuarios.buscarUsuario(nombreUsuario);

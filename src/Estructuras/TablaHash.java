@@ -7,8 +7,12 @@ package Estructuras;
 import Estructuras.Documento;
 
 /**
- *
- * @author MARYCRIS
+ * Representa la Tabla de Dispersión (Hash Table) del sistema operativo.
+ * Esta estructura es fundamental para solventar la limitación del montículo binario, 
+ * el cual no permite búsquedas secuenciales. Almacena a los usuarios registrados 
+ * y permite acceder a ellos (y a sus documentos) con una complejidad de tiempo 
+ * cercana a O(1). Las colisiones se manejan mediante encadenamiento.
+ * * @author Emily Rodriguez y Daniel Saracual
  */
 public class TablaHash {
     Usuario[] tabla;
@@ -28,6 +32,12 @@ public class TablaHash {
         return suma % tamaño;
     }
 
+    /**
+     * Inserta un nuevo usuario en la tabla hash. 
+     * Si ocurre una colisión (dos nombres generan el mismo índice), se resuelve 
+     * insertando el nuevo usuario al inicio de la lista enlazada en esa posición.
+     * * @param nuevo El objeto Usuario que se desea registrar en el sistema.
+     */
     public void insertar(Usuario nuevo) {
         int pos = funcionHash(nuevo.nombre);
         if (tabla[pos] == null) {
@@ -38,6 +48,12 @@ public class TablaHash {
         }
     }
 
+    /**
+     * Busca un usuario registrado en el sistema a través de su nombre.
+     * Calcula su índice mediante la función hash y recorre la lista enlazada 
+     * correspondiente en caso de colisiones.
+     */
+    
     public Usuario buscarUsuario(String nombre) {
         int pos = funcionHash(nombre);
         Usuario aux = tabla[pos];
@@ -65,6 +81,12 @@ public class TablaHash {
         return null;
     }
 
+    /**
+     * REQUERIMIENTO: Buscar un documento específico de un usuario.
+     * Este método es crucial para permitir la cancelación de documentos en la 
+     * cola de impresión sin necesidad de recorrer el montículo binario.
+     */
+    
     public void eliminarUsuario(String nombre) {
         int pos = funcionHash(nombre);
         Usuario aux = tabla[pos];
