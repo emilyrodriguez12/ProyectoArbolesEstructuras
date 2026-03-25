@@ -4,6 +4,11 @@
  */
 package Interfaces;
 
+import Estructuras.Documento;
+import Estructuras.SistemaImpresion;
+import Estructuras.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MARYCRIS
@@ -15,8 +20,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+     
+    // Tu cerebro del programa
+SistemaImpresion sistema = new SistemaImpresion();
+
+// Método para actualizar la pantalla después de cada clic
+    public void refrescar() {
+        txtArbol.setText(sistema.colaDeImpresion.generarVistaArbol(0, 0));
+        lblReloj.setText("Reloj: " + sistema.reloj);
+    }
     public VentanaPrincipal() {
         initComponents();
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,21 +44,165 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        BotonEnviar = new javax.swing.JButton();
+        lblReloj = new javax.swing.JLabel();
+        txtDoc = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        BotonCSV = new javax.swing.JButton();
+        BotonEnviar1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtArbol = new javax.swing.JTextField();
+        BotonEliminar = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jLabel1.setText("jLabel1");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        jLabel2.setText("Proyecto Árboles");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel3.setText("Nombre del documento:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+
+        BotonEnviar.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        BotonEnviar.setText("Atender");
+        BotonEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEnviarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BotonEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
+
+        lblReloj.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        lblReloj.setText("Reloj: 0");
+        jPanel1.add(lblReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 116, -1, 30));
+        jPanel1.add(txtDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 270, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel5.setText("Estado de la cola:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, -1, -1));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 270, -1));
+
+        BotonCSV.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        BotonCSV.setText("Cargar CSV");
+        BotonCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCSVActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BotonCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, -1));
+
+        BotonEnviar1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        BotonEnviar1.setText("Mandar a cola");
+        BotonEnviar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEnviar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BotonEnviar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel6.setText("Nombre de Usuario:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        jPanel1.add(txtArbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 160, 290, 440));
+
+        BotonEliminar.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        BotonEliminar.setText("Eliminar Documento");
+        BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BotonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 790));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotonCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCSVActionPerformed
+        // TODO add your handling code here:
+        javax.swing.JFileChooser selector = new javax.swing.JFileChooser();
+        int r = selector.showOpenDialog(this);
+        if (r == javax.swing.JFileChooser.APPROVE_OPTION) {
+            sistema.leerArchivoUsuarios(selector.getSelectedFile().getPath());
+            javax.swing.JOptionPane.showMessageDialog(this, "Usuarios cargados correctamente");
+            refrescar();
+        }
+    }//GEN-LAST:event_BotonCSVActionPerformed
+
+    private void BotonEnviar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEnviar1ActionPerformed
+        // TODO add your handling code here:
+        // Validación de campos vacíos
+        if (txtUsuario.getText().trim().isEmpty() || txtDoc.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error: El nombre de usuario y del documento no pueden estar vacíos.");
+            return;
+        }
+
+// Validación de existencia del usuario
+        if (sistema.todosLosUsuarios.buscarUsuario(txtUsuario.getText().trim()) == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error: El usuario '" + txtUsuario.getText() + "' no existe. Cargue el CSV primero.");
+            return;
+        }
+        String u = txtUsuario.getText();
+        String d = txtDoc.getText();
+
+// Para este ejemplo, el usuario primero crea el doc y luego lo manda
+        Usuario user = sistema.todosLosUsuarios.buscarUsuario(u);
+        if (user != null) {
+            user.crearDocumento(d, 100, "pdf"); // Valores por defecto para ir rápido
+            sistema.enviarADocACola(u, d, true); // Lo mandamos como urgente por defecto
+            refrescar();
+            txtDoc.setText(""); // Limpiamos para el siguiente
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Usuario no encontrado en el CSV");
+        }
+    }//GEN-LAST:event_BotonEnviar1ActionPerformed
+
+    private void BotonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEnviarActionPerformed
+        // TODO add your handling code here:
+        // Validación de cola vacía
+        if (sistema.colaDeImpresion.tamañoActual == 0) {
+            javax.swing.JOptionPane.showMessageDialog(this, "La cola de impresión está vacía actualmente.");
+            return;
+        }
+        Documento listo = sistema.imprimirSiguiente();
+        if (listo != null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Imprimiendo: " + listo.nombre + "\nDueño: " + listo.dueño);
+            refrescar();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "La cola está vacía");
+        }
+    }//GEN-LAST:event_BotonEnviarActionPerformed
+
+    private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
+        // TODO add your handling code here:
+        // Validación de entrada
+        if (txtUsuario.getText().trim().isEmpty() || txtDoc.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Indique el usuario y el documento que desea retirar de la cola.");
+            return;
+        }
+        // Código para el botón "Eliminar Documento"
+        String u = txtUsuario.getText();
+        String d = txtDoc.getText();
+
+// Usamos el truco del -1 que programamos en el Montículo
+        sistema.colaDeImpresion.forzarEliminacion(u, d);
+
+// ¡IMPORTANTÍSIMO! Llamar al método refrescar para que el árbol se actualice
+        refrescar();
+        JOptionPane.showMessageDialog(this, "Documento eliminado de la cola (si existía).");
+    }//GEN-LAST:event_BotonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +230,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCSV;
+    private javax.swing.JButton BotonEliminar;
+    private javax.swing.JButton BotonEnviar;
+    private javax.swing.JButton BotonEnviar1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblReloj;
+    private javax.swing.JTextField txtArbol;
+    private javax.swing.JTextField txtDoc;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

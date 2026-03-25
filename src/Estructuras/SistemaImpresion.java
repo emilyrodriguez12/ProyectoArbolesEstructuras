@@ -12,9 +12,9 @@ import Estructuras.Documento;
  * @author MARYCRIS
  */
 public class SistemaImpresion {
-    TablaHash todosLosUsuarios; // El almacén de usuarios (O(1))
-    MonticuloBinario colaDeImpresion; // El árbol de prioridad
-    int reloj; // El tiempo de la simulación
+    public TablaHash todosLosUsuarios; // El almacén de usuarios (O(1))
+    public MonticuloBinario colaDeImpresion; // El árbol de prioridad
+    public int reloj; // El tiempo de la simulación
 
     public SistemaImpresion() {
         this.todosLosUsuarios = new TablaHash();

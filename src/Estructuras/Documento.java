@@ -9,12 +9,12 @@ package Estructuras;
  * @author MARYCRIS
  */
 public class Documento {
-    String nombre;
-    int tamaño;
-    String tipo;   // <--- NUEVO: "pdf", "docx", etc.
-    int tiempo;    // Etiqueta de tiempo (prioridad en el Heap)
-    String dueño;  
-    boolean esPrioritario; // <--- NUEVO: para saber si se le aplicó prioridad
+    public String nombre;
+    public int tamaño;
+    public String tipo;   // <--- NUEVO: "pdf", "docx", etc.
+    public int tiempo;    // Etiqueta de tiempo (prioridad en el Heap)
+    public String dueño;  
+    public boolean esPrioritario; // <--- NUEVO: para saber si se le aplicó prioridad
 
     public Documento(String nombre, int tamaño, String tipo, int tiempo, String dueño, boolean esPrioritario) {
         this.nombre = nombre;

@@ -11,9 +11,9 @@ import Estructuras.Documento;
  * @author MARYCRIS
  */
 public class MonticuloBinario {
-    Documento[] datos; // El arreglo que guarda los documentos
-    int tamañoActual;  // Cuántos hay en la cola ahora
-    int capacidadMax;  // El límite del arreglo
+    public Documento[] datos; // El arreglo que guarda los documentos
+    public int tamañoActual;  // Cuántos hay en la cola ahora
+    public int capacidadMax;  // El límite del arreglo
 
     public MonticuloBinario(int limite) {
         this.capacidadMax = limite;
@@ -99,4 +99,33 @@ public class MonticuloBinario {
         datos[i] = datos[j];
         datos[j] = temporal;
     }
+    
+    /**
+ * REQUERIMIENTO: Vista de Árbol.
+ * Genera un String con la estructura visual del montículo.
+ */
+public String generarVistaArbol(int indice, int nivel) {
+    // Si el índice se sale del arreglo, no hay nada que dibujar
+    if (indice >= tamañoActual) {
+        return "";
+    }
+
+    String resultado = "";
+
+    // 1. Dibujar el hijo Derecho primero (para que en pantalla se vea arriba)
+    resultado += generarVistaArbol(2 * indice + 2, nivel + 1);
+
+    // 2. Agregar espacios según el nivel para dar forma de árbol
+    for (int i = 0; i < nivel; i++) {
+        resultado += "      "; // Seis espacios por cada nivel de profundidad
+    }
+
+    // 3. Agregar el nombre del documento y su prioridad
+    resultado += "|-- " + datos[indice].nombre + " (" + datos[indice].tiempo + ")\n";
+
+    // 4. Dibujar el hijo Izquierdo
+    resultado += generarVistaArbol(2 * indice + 1, nivel + 1);
+
+    return resultado;
+}
 }

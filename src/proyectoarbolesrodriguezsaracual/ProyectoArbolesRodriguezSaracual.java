@@ -4,6 +4,8 @@
  */
 package proyectoarbolesrodriguezsaracual;
 
+import Interfaces.VentanaPrincipal;
+
 /**
  *
  * @author MARYCRIS
@@ -14,7 +16,7 @@ public class ProyectoArbolesRodriguezSaracual {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("hola");
+        VentanaPrincipal nueva = new VentanaPrincipal();
         // TODO code application logic here
     }
     
